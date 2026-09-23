@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="50%" stop-color="#0099FF"/>
+      <stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+    <linearGradient id="rGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#A8B0B8"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0033CC"/>
+      <stop offset="50%" stop-color="#0099FF"/>
+      <stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+  </defs>
+  <!-- bg -->
+  <rect width="300" height="300" rx="0" fill="#000000"/>
+  <!-- outer ring - broken -->
+  <circle cx="150" cy="140" r="115" fill="none" stroke="url(#ring)" stroke-width="3" stroke-linecap="round" opacity="0.95"
+    stroke-dasharray="580 40 120 30" transform="rotate(-15 150 140)"/>
+  <!-- RP mark -->
+  <!-- R -->
+  <path d="M 55 82 L 105 82 Q 155 82 155 125 Q 155 168 115 170 L 155 250 L 115 250 L 80 175 L 65 175 L 115 170 Q 135 168 135 125 Q 135 100 105 100 L 70 100 L 55 82 Z
+           M 65 175 L 105 175 L 140 250 L 100 250 Z" fill="url(#rGrad)"/>
+  <!-- P -->
+  <path d="M 162 84 L 215 84 Q 260 84 260 135 Q 260 188 215 188 L 170 188 L 170 253 L 148 253 L 148 170 L 215 170 Q 238 170 238 135 Q 238 102 215 102 L 162 100 Z" fill="url(#pGrad)"/>
+  <!-- code inside P -->
+  <text x="205" y="143" text-anchor="middle" font-family="monospace" font-size="26" font-weight="700" fill="#00C8FF">&lt;/&gt;</text>
+  <!-- slash brighter -->
+  <!-- name -->
+  <text x="150" y="285" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="7" fill="white">RISHIKESH<tspan fill="#00B7FF"> PAL</tspan></text>
+  <text x="150" y="298" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" font-weight="500" letter-spacing="5" fill="#8A8F98">BUILD  •  LEARN  •  GROW</text>
+</svg>

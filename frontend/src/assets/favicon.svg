@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="p" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/><stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+    <linearGradient id="r" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#B8C0C8"/>
+    </linearGradient>
+    <linearGradient id="ring2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0033CC"/><stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="#000000"/>
+  <circle cx="50" cy="50" r="44" fill="none" stroke="url(#ring2)" stroke-width="2.5" opacity="0.9" stroke-dasharray="220 12 45 10" transform="rotate(-15 50 50)"/>
+  <!-- R -->
+  <path d="M 18 28 L 35 28 Q 52 28 52 42 Q 52 56 38 57 L 52 83 L 38 83 L 26 58 L 21 58 L 38 57 Q 45 56 45 42 Q 45 34 35 34 L 23 34 Z M 21 58 L 35 58 L 47 83 L 33 83 Z" fill="url(#r)"/>
+  <!-- P -->
+  <path d="M 54 29 L 72 29 Q 87 29 87 45 Q 87 62 72 62 L 57 62 L 57 84 L 49 84 L 49 56 L 72 56 Q 79 56 79 45 Q 79 34 72 34 L 54 34 Z" fill="url(#p)"/>
+  <text x="68.5" y="49.5" text-anchor="middle" font-family="monospace" font-size="9" font-weight="800" fill="#00C8FF">&lt;/&gt;</text>
+</svg>
