@@ -8,13 +8,14 @@ const GITHUB_URL = 'https://github.com/rishikesh-Dev01'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/rishikesh-pal-0508b5398/'
 const EMAIL = 'rishikeshpal937@gmail.com'
 const RESUME_URL = '/Rishikesh_Pal_Resume.pdf'
+const LOGO_URL = '/logo.svg'
+const LOGO_MARK_URL = '/logo-mark.svg'
 
 const certificates = [
   {
     title: 'Rishikesh Certificate',
     issuer: 'Certified Achievement',
     file: '/Rishikesh certificate.pdf',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80&auto=format&fit=crop',
     color: '#6366F1',
     desc: 'Professional certification showcasing completed training and verified skills.',
   },
@@ -22,7 +23,6 @@ const certificates = [
     title: 'YouTube BluePrint',
     issuer: 'YouTube Certified',
     file: '/YouTube BluePrint.pdf',
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80&auto=format&fit=crop',
     color: '#FF0000',
     desc: 'YouTube Blueprint certification — content strategy, growth and channel optimization.',
   },
@@ -164,7 +164,7 @@ function Loader({ done }) {
   return (
     <div className="cinematic-loader" style={{ display: done ? 'none' : 'flex' }}>
       <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '0 1.5rem' }}>
-        <div style={{ width: 80, height: 80, borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,.1)', boxShadow: '0 0 28px rgba(0,229,255,.45)', marginBottom: 24, background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, letterSpacing: 2 }}>RP</div>
+        <img src={LOGO_URL} alt="Rishikesh Pal logo" style={{ width: 80, height: 80, borderRadius: 16, border: '1px solid rgba(255,255,255,.12)', boxShadow: '0 0 28px rgba(0,229,255,.45)', marginBottom: 24, objectFit: 'cover' }} />
         <div className="cyber-glitch-text" data-text="SYSTEM INITIALIZING">SYSTEM INITIALIZING</div>
         <div className="loader-bar-container">
           <div className="loader-bar" style={{ width: Math.round(pct) + '%' }} />
@@ -188,34 +188,77 @@ function Navbar({ theme, toggleTheme }) {
   }, [])
   const closeMenu = () => setOpen(false)
   return (
-    <header id="navbar" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, transition: 'all .3s', padding: scrolled ? '12px 0' : '20px 0' }}>
-      <div className="container-max" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', ...(scrolled ? { background: 'rgba(22,22,22,.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(38,38,38,.8)', borderRadius: 16, padding: '14px 20px', boxShadow: '0 8px 32px rgba(0,0,0,.3)' } : {}) }}>
-        <a href="#home" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', color: 'inherit' }}>
-          <div style={{ width: 36, height: 36, borderRadius: 12, background: '#000', border: '1px solid #262626', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 13, boxShadow: '0 0 12px rgba(0,180,255,.35)' }}>RP</div>
-          <span style={{ fontWeight: 600, letterSpacing: '-.02em', fontSize: 15 }}>Rishikesh Pal</span>
-          <span style={{ fontSize: 11, padding: '4px 8px', borderRadius: 999, background: '#1c1c1c', border: '1px solid #262626', color: '#A1A1AA' }} className="hide-on-mobile">Available for opportunities</span>
+    <header id="navbar" className={scrolled ? 'navbar-scrolled' : ''} style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, transition: 'all .3s', padding: scrolled ? '10px 0' : '18px 0' }}>
+      <div className={`navbar-inner container-max ${scrolled ? 'navbar-glass' : ''}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, transition: 'all .3s' }}>
+        <a href="#home" className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit', minWidth: 0, flexShrink: 0 }}>
+          <img src={LOGO_MARK_URL} alt="Rishikesh Pal logo" className="navbar-logo" width={38} height={38} style={{ width: 38, height: 38, minWidth: 38, minHeight: 38, borderRadius: 10, border: '1px solid #262626', boxShadow: '0 0 12px rgba(0,180,255,.35)', objectFit: 'contain', flexShrink: 0, background: '#000', display: 'block' }} />
+          <span className="navbar-name" style={{ fontWeight: 700, letterSpacing: '-.02em', fontSize: 15, whiteSpace: 'nowrap' }}>Rishikesh Pal</span>
+          <span style={{ fontSize: 11, padding: '4px 8px', borderRadius: 999, background: '#1c1c1c', border: '1px solid #262626', color: '#A1A1AA', whiteSpace: 'nowrap' }} className="hide-on-mobile">Available for opportunities</span>
         </a>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="desktop-nav">
+        <nav className="desktop-nav">
           {navLinks.map(l => <a key={l.href} href={l.href} className="nav-link">{l.label}</a>)}
         </nav>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer" style={{ width: 36, height: 36, borderRadius: 999, border: '1px solid #262626', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'inherit', fontSize: 13 }}>◈</a>
-          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" style={{ width: 36, height: 36, borderRadius: 999, border: '1px solid #262626', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'inherit', fontSize: 11 }}>in</a>
-          <button onClick={toggleTheme} aria-label="toggle theme" style={{ width: 36, height: 36, borderRadius: 999, border: '1px solid #262626', background: 'transparent', color: 'inherit', cursor: 'pointer', fontSize: 16 }}>{theme === 'dark' ? '☾' : '☀'}</button>
-          <button onClick={() => setOpen(o => !o)} style={{ width: 36, height: 36, borderRadius: 999, border: '1px solid #262626', background: 'transparent', color: 'inherit', cursor: 'pointer', fontSize: 16 }} className="menu-btn">{open ? '✕' : '☰'}</button>
+        <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+          <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="nav-icon-btn" aria-label="GitHub">◈</a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="nav-icon-btn hide-linkedin" aria-label="LinkedIn">in</a>
+          <button onClick={toggleTheme} aria-label="toggle theme" className="nav-icon-btn nav-theme-btn">{theme === 'dark' ? '☾' : '☀'}</button>
+          <button onClick={() => setOpen(o => !o)} aria-label="menu" className="nav-icon-btn menu-btn">{open ? '✕' : '☰'}</button>
         </div>
       </div>
       {open && (
-        <div style={{ margin: '12px 24px 0', background: 'rgba(22,22,22,.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(38,38,38,.8)', borderRadius: 16, padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {navLinks.map(l => <a key={l.href} href={l.href} onClick={closeMenu} style={{ color: '#A1A1AA', textDecoration: 'none', fontSize: 14 }}>{l.label}</a>)}
+        <div className="navbar-mobile-panel">
+          {navLinks.map(l => <a key={l.href} href={l.href} onClick={closeMenu}>{l.label}</a>)}
+          <div style={{ display: 'flex', gap: 8, paddingTop: 8, borderTop: '1px solid #262626', marginTop: 4 }}>
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="btn-outline" style={{ flex: 1, justifyContent: 'center', padding: '10px' }}>GitHub</a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="btn-outline" style={{ flex: 1, justifyContent: 'center', padding: '10px' }}>LinkedIn</a>
+          </div>
         </div>
       )}
       <style>{`
         .hide-on-mobile { display: none; }
-        .desktop-nav { display: none; }
-        .menu-btn { display: flex; }
-        @media (min-width: 768px) { .hide-on-mobile { display: inline-flex; } }
-        @media (min-width: 1024px) { .desktop-nav { display: flex; } .menu-btn { display: none; } }
+        .desktop-nav { display: none !important; align-items: center; gap: 2px; }
+        .menu-btn { display: flex !important; }
+        .hide-linkedin { display: none; }
+        .nav-icon-btn {
+          width: 36px; height: 36px; border-radius: 999px; border: 1px solid #262626;
+          display: flex; align-items: center; justify-content: center;
+          text-decoration: none; color: inherit; font-size: 13px;
+          background: transparent; cursor: pointer; flex-shrink: 0;
+        }
+        .nav-icon-btn.hide-linkedin { font-size: 11px; }
+        .navbar-inner { flex-wrap: nowrap; }
+        .navbar-brand { flex-shrink: 0; }
+        .navbar-glass {
+          background: rgba(22,22,22,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(38,38,38,.85); border-radius: 14px;
+          padding: 10px 14px !important; box-shadow: 0 8px 32px rgba(0,0,0,.35);
+          max-width: calc(100% - 20px); margin: 0 auto; box-sizing: border-box;
+        }
+        .navbar-mobile-panel {
+          margin: 10px 10px 0; background: rgba(22,22,22,.96); backdrop-filter: blur(16px);
+          border: 1px solid rgba(38,38,38,.85); border-radius: 14px;
+          padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;
+          max-width: calc(100% - 20px); margin-left: auto; margin-right: auto; box-sizing: border-box;
+        }
+        .navbar-mobile-panel a { color: #A1A1AA; text-decoration: none; font-size: 14px; padding: 6px 0; }
+        .navbar-mobile-panel a:hover { color: #fff; }
+        .navbar-logo { image-rendering: -webkit-optimize-contrast; display: block; }
+        @media (min-width: 400px) { .hide-linkedin { display: flex !important; } }
+        @media (min-width: 768px) { .hide-on-mobile { display: inline-flex !important; } .nav-icon-btn { width: 36px; height: 36px; } }
+        @media (min-width: 1024px) { .desktop-nav { display: flex !important; } .menu-btn { display: none !important; } .navbar-glass { padding: 12px 18px !important; border-radius: 16px; } }
+        @media (min-width: 1200px) { .desktop-nav { gap: 4px; } }
+        @media (max-width: 380px) {
+          .navbar-name { font-size: 14px !important; }
+          .navbar-logo { width: 34px !important; height: 34px !important; min-width: 34px !important; min-height: 34px !important; border-radius: 9px !important; }
+          .nav-icon-btn { width: 32px !important; height: 32px !important; font-size: 12px !important; }
+          .navbar-actions { gap: 5px !important; }
+          .navbar-brand { gap: 8px !important; }
+          .navbar-glass { padding: 8px 10px !important; max-width: calc(100% - 12px) !important; }
+          .navbar-mobile-panel { margin: 8px 6px 0 !important; max-width: calc(100% - 12px) !important; }
+        }
+        @media (max-width: 340px) {
+          .navbar-name { display: none !important; }
+        }
       `}</style>
     </header>
   )
@@ -356,7 +399,7 @@ function About() {
           <div className="card" style={{ padding: 24, position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, right: 0, width: 128, height: 128, background: 'rgba(99,102,241,.1)', filter: 'blur(32px)', borderRadius: '50%' }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 48, height: 48, borderRadius: 12, background: '#000', border: '1px solid #262626', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900 }}>RP</div>
+              <img src={LOGO_MARK_URL} alt="Rishikesh Pal logo" style={{ width: 48, height: 48, borderRadius: 12, border: '1px solid #262626', objectFit: 'cover', boxShadow: '0 0 12px rgba(0,180,255,0.3)', background: '#000' }} />
               <div>
                 <div style={{ fontSize: 14, fontWeight: 600 }}>Rishikesh Pal</div>
                 <div style={{ fontSize: 12, color: '#A1A1AA' }}>Full-Stack Developer • India</div>
@@ -748,8 +791,76 @@ function Experience() {
   )
 }
 
-// ============ ACHIEVEMENTS / CERTIFICATES ============
+// ============ ACHIEVEMENTS / CERTIFICATES — 3D + ZOOM ============
 function Achievements() {
+  const [activeCert, setActiveCert] = useState(null)
+  const [zoom, setZoom] = useState(1)
+
+  // Render PDF first-page thumbnails to canvas via pdf.js CDN
+  useEffect(() => {
+    let cancelled = false
+    const loadPdfJs = () => new Promise((resolve, reject) => {
+      if (window.pdfjsLib) return resolve(window.pdfjsLib)
+      const s = document.createElement('script')
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'
+      s.onload = () => resolve(window.pdfjsLib)
+      s.onerror = reject
+      document.head.appendChild(s)
+    })
+
+    loadPdfJs().then(pdfjsLib => {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'
+      certificates.forEach((cert, idx) => {
+        const canvas = document.getElementById(`cert-thumb-${idx}`)
+        if (!canvas) return
+        pdfjsLib.getDocument(cert.file).promise.then(pdf => pdf.getPage(1)).then(page => {
+          if (cancelled) return
+          const viewport = page.getViewport({ scale: 1.2 })
+          const ctx = canvas.getContext('2d')
+          canvas.width = viewport.width
+          canvas.height = viewport.height
+          canvas.style.width = '100%'
+          canvas.style.height = 'auto'
+          page.render({ canvasContext: ctx, viewport }).promise.then(() => {
+            // hide fallback after successful render
+            const fallback = canvas.parentElement?.querySelector('.cert-fallback')
+            if (fallback) { fallback.style.opacity = '0'; fallback.style.pointerEvents = 'none' }
+          })
+        }).catch(() => {
+          // fallback: leave placeholder
+        })
+      })
+    }).catch(() => {})
+
+    return () => { cancelled = true }
+  }, [])
+
+  // lock scroll when modal open
+  useEffect(() => {
+    if (activeCert) {
+      document.body.style.overflow = 'hidden'
+      setZoom(1)
+    } else {
+      document.body.style.overflow = ''
+    }
+    const esc = e => { if (e.key === 'Escape') setActiveCert(null) }
+    window.addEventListener('keydown', esc)
+    return () => window.removeEventListener('keydown', esc)
+  }, [activeCert])
+
+  const handleTilt = (e) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const rx = ((y / rect.height) - 0.5) * -10
+    const ry = ((x / rect.width) - 0.5) * 12
+    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0) scale(1.02)`
+  }
+  const resetTilt = (e) => {
+    e.currentTarget.style.transform = 'perspective(900px) rotateX(0) rotateY(0) scale(1)'
+  }
+
   return (
     <section id="achievements" className="section-pad reveal" style={{ background: '#111111', borderTop: '1px solid #262626', borderBottom: '1px solid #262626' }}>
       <div className="container-max">
@@ -760,41 +871,101 @@ function Achievements() {
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'end', justifyContent: 'space-between', gap: 16, marginBottom: 32 }}>
           <div>
             <h2 style={{ fontSize: 'clamp(28px,4vw,36px)', fontWeight: 700 }}>Certificates & Achievements</h2>
-            <p style={{ color: '#A1A1AA', fontSize: 14, marginTop: 8, maxWidth: 600 }}>Verified certificates from <code style={{ background: '#161616', border: '1px solid #262626', padding: '2px 6px', borderRadius: 6, fontSize: 12 }}>public/</code> — click View to open in new tab, Download to save.</p>
+            <p style={{ color: '#A1A1AA', fontSize: 14, marginTop: 8, maxWidth: 600 }}>Click card to zoom — 3D preview of your real certificates from <code style={{ background: '#161616', border: '1px solid #262626', padding: '2px 6px', borderRadius: 6, fontSize: 12 }}>public/</code></p>
           </div>
           <span style={{ fontSize: 12, padding: '6px 12px', borderRadius: 999, background: '#161616', border: '1px solid #262626', color: '#A1A1AA' }}>{certificates.length} certificates</span>
         </div>
+
         <div className="achievements-grid">
           {certificates.map((c, i) => (
-            <div key={i} className="card" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ position: 'relative', height: 190, overflow: 'hidden', background: '#0f0f0f' }}>
-                <img src={c.image} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85 }} loading="lazy" />
-                <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to top, ${c.color}33, transparent)` }} />
-                <div style={{ position: 'absolute', top: 12, left: 12, padding: '4px 10px', borderRadius: 999, background: 'rgba(0,0,0,.65)', border: '1px solid rgba(255,255,255,.12)', fontSize: 11, display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: c.color, display: 'inline-block' }} />{c.issuer}
-                </div>
-                <div style={{ position: 'absolute', bottom: 12, left: 12, right: 12, background: 'rgba(0,0,0,.55)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,.1)', borderRadius: 12, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 10, background: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, flexShrink: 0 }}>🎓</div>
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.title}</div>
-                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,.7)' }}>PDF • Verified</div>
+            <div key={i} style={{ perspective: '900px' }}>
+              <div
+                className="card cert-3d-card"
+                onMouseMove={handleTilt}
+                onMouseLeave={resetTilt}
+                onClick={() => setActiveCert(c)}
+                style={{
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  cursor: 'zoom-in',
+                  transition: 'transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease',
+                  transformStyle: 'preserve-3d',
+                  willChange: 'transform',
+                }}
+              >
+                {/* 3D thumb - responsive */}
+                <div style={{ position: 'relative', height: 'clamp(200px, 55vw, 280px)', background: '#ffffff', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #262626' }}>
+                  <canvas id={`cert-thumb-${i}`} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                  {/* fallback icon if canvas empty */}
+                  <div className="cert-fallback" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10, background: `linear-gradient(135deg, ${c.color}08, #fff)`, pointerEvents: 'none' }}>
+                    <div style={{ width: 56, height: 56, borderRadius: 14, background: c.color, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, boxShadow: `0 8px 24px ${c.color}40` }}>🎓</div>
+                    <span style={{ fontSize: 12, color: '#52525b', fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase' }}>{c.issuer}</span>
                   </div>
+                  {/* top badge */}
+                  <div style={{ position: 'absolute', top: 12, left: 12, padding: '5px 10px', borderRadius: 999, background: 'rgba(0,0,0,.72)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,.14)', fontSize: 11, color: '#fff', display: 'flex', alignItems: 'center', gap: 6, transform: 'translateZ(30px)' }}>
+                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: c.color, display: 'inline-block', boxShadow: `0 0 8px ${c.color}` }} />{c.issuer}
+                  </div>
+                  {/* zoom hint */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'all .2s' }} className="cert-hover-overlay">
+                    <span style={{ padding: '8px 14px', borderRadius: 999, background: 'rgba(0,0,0,.75)', color: '#fff', fontSize: 13, fontWeight: 600, backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,.15)', transform: 'translateZ(40px)' }}>🔍 Click to Zoom</span>
+                  </div>
+                  {/* 3D shine */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,.12) 50%, transparent 60%)', opacity: 0, transition: 'opacity .3s', pointerEvents: 'none' }} className="cert-shine" />
                 </div>
-              </div>
-              <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
-                <div>
-                  <h3 style={{ fontSize: 15, fontWeight: 600 }}>{c.title}</h3>
-                  <p style={{ fontSize: 13, color: '#A1A1AA', marginTop: 4, lineHeight: 1.5 }}>{c.desc}</p>
-                </div>
-                <div style={{ display: 'flex', gap: 8, marginTop: 'auto' }}>
-                  <a href={c.file} target="_blank" rel="noreferrer" className="btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '10px 14px', fontSize: 13 }}>👁 View</a>
-                  <a href={c.file} download={c.file.split('/').pop()} className="btn-outline" style={{ flex: 1, justifyContent: 'center', padding: '10px 14px', fontSize: 13 }}>↓ Download</a>
+
+                <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 10, flex: 1, transform: 'translateZ(20px)' }}>
+                  <div>
+                    <h3 style={{ fontSize: 15, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}>{c.title} <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 999, background: `${c.color}18`, color: c.color, border: `1px solid ${c.color}30` }}>Verified</span></h3>
+                    <p style={{ fontSize: 13, color: '#A1A1AA', marginTop: 4, lineHeight: 1.5 }}>{c.desc}</p>
+                  </div>
+                  <div style={{ display: 'flex', gap: 8, marginTop: 'auto' }} onClick={e => e.stopPropagation()}>
+                    <button onClick={() => setActiveCert(c)} className="btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '10px 14px', fontSize: 13, border: 'none', cursor: 'pointer' }}>🔍 View Certificate</button>
+                    <a href={c.file} target="_blank" rel="noreferrer" className="btn-outline" style={{ padding: '10px 12px', fontSize: 13, display: 'flex', alignItems: 'center' }}>↗</a>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* LIGHTBOX / ZOOM MODAL */}
+      {activeCert && (
+        <>
+          <div onClick={() => setActiveCert(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.78)', backdropFilter: 'blur(10px)', zIndex: 80 }} />
+          <div onClick={e => { if (e.target === e.currentTarget) setActiveCert(null) }} style={{ position: 'fixed', inset: 0, zIndex: 81, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 12px' }}>
+            <div style={{ background: '#0f0f0f', border: '1px solid #2a2a2a', borderRadius: 16, width: 'min(920px, 96vw)', maxHeight: '92vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(99,102,241,.18)', animation: 'fadeSlideIn .24s ease' }}>
+              {/* header */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderBottom: '1px solid #262626', background: '#161616', flexShrink: 0 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: activeCert.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14 }}>🎓</div>
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{activeCert.title}</div>
+                  <div style={{ fontSize: 11, color: '#A1A1AA' }}>{activeCert.issuer} • PDF • Click + / − to zoom</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <button onClick={() => setZoom(z => Math.max(0.6, z - 0.15))} style={{ width: 36, height: 36, borderRadius: 10, border: '1px solid #262626', background: '#0f0f0f', color: '#fff', cursor: 'pointer', fontSize: 16 }}>−</button>
+                  <span style={{ fontSize: 12, color: '#A1A1AA', minWidth: 48, textAlign: 'center' }}>{Math.round(zoom * 100)}%</span>
+                  <button onClick={() => setZoom(z => Math.min(2.2, z + 0.15))} style={{ width: 36, height: 36, borderRadius: 10, border: '1px solid #262626', background: '#0f0f0f', color: '#fff', cursor: 'pointer', fontSize: 16 }}>+</button>
+                </div>
+                <button onClick={() => setActiveCert(null)} style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(255,255,255,.08)', border: '1px solid #2a2a2a', color: '#fff', cursor: 'pointer' }}>✕</button>
+              </div>
+              {/* pdf viewer */}
+                <div style={{ flex: 1, overflow: 'auto', background: '#1a1a1a', display: 'flex', justifyContent: 'center', padding: 'clamp(8px, 2vw, 16px)' }}>
+                <div style={{ transform: `scale(${zoom})`, transformOrigin: 'top center', transition: 'transform .14s ease', width: '100%', maxWidth: 760 }}>
+                  <iframe src={`${activeCert.file}#toolbar=0&navpanes=0&scrollbar=1`} title={activeCert.title} style={{ width: '100%', height: 'clamp(360px, 65vh, 760px)', border: '1px solid #2a2a2a', borderRadius: 12, background: '#fff', boxShadow: '0 12px 40px rgba(0,0,0,.45)' }} />
+                </div>
+              </div>
+              {/* actions */}
+              <div style={{ display: 'flex', gap: 8, padding: 12, borderTop: '1px solid #262626', background: '#161616', flexWrap: 'wrap' }}>
+                <a href={activeCert.file} target="_blank" rel="noreferrer" className="btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '11px 14px' }}>↗ Open in new tab</a>
+                <a href={activeCert.file} download={activeCert.file.split('/').pop()} className="btn-outline" style={{ flex: 1, justifyContent: 'center', padding: '11px 14px' }}>↓ Download PDF</a>
+                <button onClick={() => setActiveCert(null)} className="btn-outline" style={{ padding: '11px 14px', cursor: 'pointer' }}>Close</button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </section>
   )
 }
@@ -917,7 +1088,7 @@ function Footer() {
         <span style={{ color: '#A1A1AA' }}>© {new Date().getFullYear()} Rishikesh Pal</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#A1A1AA' }}>Built with <span style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: 4 }}>◈ React</span> • Vite • Vanilla CSS</span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#000', border: '1px solid #262626', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 12 }}>RP</div>
+          <img src={LOGO_MARK_URL} alt="Rishikesh Pal" style={{ width: 32, height: 32, borderRadius: '50%', border: '1px solid #262626', objectFit: 'cover', background: '#000' }} />
           <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="footer-link">◈</a>
           <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="footer-link" style={{ fontSize: 11 }}>in</a>
           <a href={`mailto:${EMAIL}`} className="footer-link">✉</a>
