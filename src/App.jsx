@@ -7,12 +7,33 @@ import { skillGroups, currentlyLearning } from './data/skills'
 const GITHUB_URL = 'https://github.com/rishikesh-Dev01'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/rishikesh-pal-0508b5398/'
 const EMAIL = 'rishikeshpal937@gmail.com'
+const RESUME_URL = '/Rishikesh_Pal_Resume.pdf'
+
+const certificates = [
+  {
+    title: 'Rishikesh Certificate',
+    issuer: 'Certified Achievement',
+    file: '/Rishikesh certificate.pdf',
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80&auto=format&fit=crop',
+    color: '#6366F1',
+    desc: 'Professional certification showcasing completed training and verified skills.',
+  },
+  {
+    title: 'YouTube BluePrint',
+    issuer: 'YouTube Certified',
+    file: '/YouTube BluePrint.pdf',
+    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80&auto=format&fit=crop',
+    color: '#FF0000',
+    desc: 'YouTube Blueprint certification — content strategy, growth and channel optimization.',
+  },
+]
 
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Achievements', href: '#achievements' },
   { label: 'Experience', href: '#experience' },
   { label: 'Journey', href: '#journey' },
   { label: 'Contact', href: '#contact' },
@@ -231,7 +252,8 @@ function Hero({ role }) {
             </p>
             <div style={{ marginTop: 28, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
               <a href="#projects" className="btn-primary">View My Work →</a>
-              <a href={`mailto:${EMAIL}`} className="btn-outline">↓ Download Resume</a>
+              <a href={RESUME_URL} target="_blank" rel="noreferrer" className="btn-outline">👁 View Resume</a>
+              <a href={RESUME_URL} download="Rishikesh_Pal_Resume.pdf" className="btn-outline">↓ Download Resume</a>
             </div>
             <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16, fontSize: 14, color: '#A1A1AA', textDecoration: 'none' }}>Let's Connect →</a>
             <div style={{ marginTop: 32, display: 'flex', alignItems: 'center', gap: 16, fontSize: 12, color: '#A1A1AA', flexWrap: 'wrap' }}>
@@ -726,6 +748,57 @@ function Experience() {
   )
 }
 
+// ============ ACHIEVEMENTS / CERTIFICATES ============
+function Achievements() {
+  return (
+    <section id="achievements" className="section-pad reveal" style={{ background: '#111111', borderTop: '1px solid #262626', borderBottom: '1px solid #262626' }}>
+      <div className="container-max">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+          <span style={{ width: 32, height: 1, background: '#6366F1', display: 'inline-block' }} />
+          <span style={{ fontSize: 12, letterSpacing: '.2em', color: '#A1A1AA', textTransform: 'uppercase' }}>Achievements</span>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'end', justifyContent: 'space-between', gap: 16, marginBottom: 32 }}>
+          <div>
+            <h2 style={{ fontSize: 'clamp(28px,4vw,36px)', fontWeight: 700 }}>Certificates & Achievements</h2>
+            <p style={{ color: '#A1A1AA', fontSize: 14, marginTop: 8, maxWidth: 600 }}>Verified certificates from <code style={{ background: '#161616', border: '1px solid #262626', padding: '2px 6px', borderRadius: 6, fontSize: 12 }}>public/</code> — click View to open in new tab, Download to save.</p>
+          </div>
+          <span style={{ fontSize: 12, padding: '6px 12px', borderRadius: 999, background: '#161616', border: '1px solid #262626', color: '#A1A1AA' }}>{certificates.length} certificates</span>
+        </div>
+        <div className="achievements-grid">
+          {certificates.map((c, i) => (
+            <div key={i} className="card" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ position: 'relative', height: 190, overflow: 'hidden', background: '#0f0f0f' }}>
+                <img src={c.image} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85 }} loading="lazy" />
+                <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to top, ${c.color}33, transparent)` }} />
+                <div style={{ position: 'absolute', top: 12, left: 12, padding: '4px 10px', borderRadius: 999, background: 'rgba(0,0,0,.65)', border: '1px solid rgba(255,255,255,.12)', fontSize: 11, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: c.color, display: 'inline-block' }} />{c.issuer}
+                </div>
+                <div style={{ position: 'absolute', bottom: 12, left: 12, right: 12, background: 'rgba(0,0,0,.55)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,.1)', borderRadius: 12, padding: '10px 12px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 10, background: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, flexShrink: 0 }}>🎓</div>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.title}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,.7)' }}>PDF • Verified</div>
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
+                <div>
+                  <h3 style={{ fontSize: 15, fontWeight: 600 }}>{c.title}</h3>
+                  <p style={{ fontSize: 13, color: '#A1A1AA', marginTop: 4, lineHeight: 1.5 }}>{c.desc}</p>
+                </div>
+                <div style={{ display: 'flex', gap: 8, marginTop: 'auto' }}>
+                  <a href={c.file} target="_blank" rel="noreferrer" className="btn-primary" style={{ flex: 1, justifyContent: 'center', padding: '10px 14px', fontSize: 13 }}>👁 View</a>
+                  <a href={c.file} download={c.file.split('/').pop()} className="btn-outline" style={{ flex: 1, justifyContent: 'center', padding: '10px 14px', fontSize: 13 }}>↓ Download</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ============ RESUME CTA ============
 function ResumeCTA() {
   return (
@@ -734,11 +807,11 @@ function ResumeCTA() {
         <div className="card" style={{ padding: 32, display: 'flex', flexDirection: 'column', gap: 24, background: 'linear-gradient(to bottom right,#161616,#1a1a1a)' }}>
           <div>
             <h2 style={{ fontSize: 'clamp(20px,3vw,30px)', fontWeight: 700 }}>Want to know more about my journey?</h2>
-            <p style={{ color: '#A1A1AA', fontSize: 14, marginTop: 8, maxWidth: 600 }}>Take a closer look at my education, technical skills, projects and development experience.</p>
+            <p style={{ color: '#A1A1AA', fontSize: 14, marginTop: 8, maxWidth: 600 }}>Take a closer look at my education, technical skills, projects and development experience — resume available as PDF.</p>
           </div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a href={`mailto:${EMAIL}`} className="btn-primary" style={{ padding: '12px 24px' }}>👁 View Resume</a>
-            <a href={`mailto:${EMAIL}`} className="btn-outline" style={{ padding: '12px 24px' }}>↓ Download</a>
+            <a href={RESUME_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '12px 24px' }}>👁 View Resume</a>
+            <a href={RESUME_URL} download="Rishikesh_Pal_Resume.pdf" className="btn-outline" style={{ padding: '12px 24px' }}>↓ Download</a>
           </div>
         </div>
       </div>
@@ -947,6 +1020,8 @@ export default function App() {
         <Philosophy />
         <div className="section-gap" />
         <Exploring />
+        <div className="section-gap" />
+        <Achievements />
         <div className="section-gap" />
         <Experience />
         <div className="section-gap" />
