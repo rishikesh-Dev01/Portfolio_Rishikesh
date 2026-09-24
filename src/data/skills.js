@@ -1,7 +1,5 @@
-export type Skill = { name: string; desc: string; icon: string }
-export type SkillGroup = { title: string; color: string; items: Skill[] }
-
-export const skillGroups: SkillGroup[] = [
+// Skills Data
+export const skillGroups = [
   {
     title: "Frontend",
     color: "#6366F1",

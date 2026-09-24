@@ -1,93 +1,16 @@
-# Rishikesh Pal — Portfolio (Frontend + Backend separated)
+# React + Vite
 
-Modern, premium portfolio for **Rishikesh Pal**, Full-Stack Developer & BSE/IT student.  
-Dark-first, glassmorphism, Framer Motion, fully responsive.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Structure
+Currently, two official plugins are available:
 
-```
-PortFolio/
-├── frontend/   # Vite + React + TS + Tailwind + Framer Motion
-│   ├── src/
-│   │   ├── components/  (inline in App.tsx + data-driven)
-│   │   ├── data/        projects.ts, skills.ts  (fallback)
-│   │   ├── lib/api.ts   axios client -> backend
-│   │   └── App.tsx
-│   ├── .env.example  -> VITE_API_URL
-│   └── package.json
-└── backend/    # Node.js + Express + MongoDB + Mongoose
-    ├── src/
-    │   ├── server.js
-    │   ├── config/db.js
-    │   ├── data/  projects.js, skills.js
-    │   ├── models/Contact.js
-    │   ├── routes/ projects.js, skills.js, contact.js, github.js
-    │   └── middleware/errorHandler.js
-    ├── .env.example
-    └── package.json
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Frontend — quick start
+## React Compiler
 
-```bash
-cd frontend
-npm install
-npm run dev      # http://localhost:5173
-npm run build
-npm run preview
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Env: `frontend/.env`
-```
-VITE_API_URL=http://localhost:5000
-VITE_GITHUB_USERNAME=octocat
-```
+## Expanding the Oxlint configuration
 
-Frontend works **standalone** — if backend is down it falls back to local `src/data/*`.
-
-## Backend — quick start
-
-```bash
-cd backend
-npm install
-cp .env.example .env   # edit MONGO_URI, FRONTEND_URL, GITHUB_TOKEN
-npm run dev            # http://localhost:5000 (nodemon)
-npm start              # production
-```
-
-### API
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | Info |
-| GET | `/api/health` | Health check |
-| GET | `/api/projects?filter=AI&search=kitchen` | List projects |
-| GET | `/api/projects/:id` | Single project |
-| GET | `/api/skills` | All skill groups + learning |
-| POST | `/api/contact` | Submit contact form (validated) |
-| GET | `/api/github/repos?username=octocat` | Proxy to GitHub API |
-| GET | `/api/github/profile?username=octocat` | GitHub profile |
-
-Contact validates with `validator`, saves to MongoDB if `MONGO_URI` set, otherwise logs to console — portfolio still runs without DB.
-
-## Monorepo (root)
-
-```bash
-npm install              # installs concurrently
-npm run install:all
-npm run dev              # runs frontend+backend together
-npm run dev:frontend
-npm run dev:backend
-```
-
-Requires Node >=18.
-
-## Deploy
-
-- **Frontend:** Vercel / Netlify (`frontend/dist`)
-- **Backend:** Render / Railway / Fly.io — set `MONGO_URI`, `FRONTEND_URL` env.
-
-## Features (all 16 sections)
-
-Hero, Stats, About, Skills, Projects + filters + modal, Journey timeline, Problem Solving, Philosophy, Currently Learning, Experience, GitHub, Resume CTA, Contact (validated + toast), Footer — plus theme toggle, smooth scroll, animated cursor, page transitions.
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

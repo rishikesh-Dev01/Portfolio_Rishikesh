@@ -1,24 +1,5 @@
-export type Project = {
-  id: string
-  title: string
-  category: string
-  tags: string[]
-  description: string
-  features: string[]
-  technologies: string[]
-  github: string
-  live: string
-  image: string
-  gradient: string
-  filter: string[]
-  problem: string
-  solution: string
-  architecture: string
-  challenges: string
-  learned: string
-}
-
-export const projects: Project[] = [
+// Projects Data
+export const projects = [
   {
     id: "recall-ai",
     title: "Recall AI",
@@ -30,7 +11,7 @@ export const projects: Project[] = [
     github: "https://github.com/rishikesh-Dev01/recall.ai",
     live: "https://recall-ai-ashen.vercel.app/",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop",
-    gradient: "from-violet-600 via-indigo-600 to-sky-500",
+    gradient: "linear-gradient(to top,#7c3aed,#4f46e5,#0ea5e9)",
     filter: ["All", "Full Stack", "AI"],
     problem: "Information overload makes it hard to recall important notes and insights quickly.",
     solution: "Built an AI assistant that indexes content and returns contextual recall with fast search and clean UI.",
@@ -49,7 +30,7 @@ export const projects: Project[] = [
     github: "https://github.com/rishikesh-Dev01/Wanderlust",
     live: "https://wanderlust-theta-murex.vercel.app/",
     image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80&auto=format&fit=crop",
-    gradient: "from-orange-500 via-pink-500 to-violet-600",
+    gradient: "linear-gradient(to top,#f97316,#ec4899,#7c3aed)",
     filter: ["All", "Full Stack", "Backend"],
     problem: "Travel discovery is fragmented; users want curated destination browsing.",
     solution: "Built a full-stack app with auth, CRUD listings, and rich media galleries.",
